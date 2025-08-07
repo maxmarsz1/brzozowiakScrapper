@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'offers',  # Custom app for handling offers,
+    'offers.apps.OffersConfig',  # Custom app for handling offers,
     'django_crontab',  # For scheduling tasks
 ]
 
@@ -125,5 +125,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CRONJOBS = [
-    ('1 * * * *', 'offers.cron.gather_offers'),
+    ('*/5 * * * *', 'django.core.management.call_command', ['scrape_new_offers']),
 ]

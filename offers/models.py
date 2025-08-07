@@ -2,7 +2,8 @@ from django.db import models
 
 
 class Offer(models.Model):
-    url = models.URLField(max_length=255, unique=True)
+    path = models.URLField(max_length=255, unique=True)
+    offer_id = models.CharField(max_length=10, unique=True)
     title = models.CharField(max_length=255)
     price = models.IntegerField()
     image = models.URLField(max_length=255, blank=True, null=True)
@@ -28,3 +29,16 @@ class Offer(models.Model):
         verbose_name = 'Offer'
         verbose_name_plural = 'Offers'
         ordering = ['-date']
+
+
+class OfferFailed(models.Model):
+    path = models.URLField(max_length=255, unique=True)
+    error_message = models.TextField()
+
+    def __str__(self):
+        return f"Failed Offer: {self.path}"
+
+    class Meta:
+        verbose_name = 'Failed Offer'
+        verbose_name_plural = 'Failed Offers'
+        ordering = ['path']
