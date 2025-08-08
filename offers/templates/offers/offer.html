@@ -1,0 +1,12 @@
+{% extends 'offers/base.html' %}
+
+{% block title %}Offer {{ offer.title }}{% endblock title %}
+
+{% block content %}
+
+    <h1>{{ offer.title }}</h1>
+    <p>{{ offer.description }}</p>
+    <p>Price: {{ offer.price }}</p>
+    <p><a href="https://brzozowiak.pl{{offer.path}}" target="_blank">Offer link</a></p>
+
+{% endblock content %}
