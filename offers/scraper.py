@@ -104,11 +104,11 @@ def gather_new_offers_paths():
         page_offers_paths = gather_offers_paths_from_page(page_number)
         new_found_offers_paths = utils.filter_new_paths(page_offers_paths)
 
+        print(f"Found {len(new_found_offers_paths)} new offers on page {page_number}.")
+        
         if len(new_found_offers_paths) == 0:
-            print(f"All offers on page {page_number} already exist in the database.")
             new_path_on_page = False    #When all paths found on page already exist in db
         else:
-            print(f"Found {len(new_found_offers_paths)} new offers on page {page_number}.")
             new_offers_paths.extend(new_found_offers_paths)
             page_number += 1
 
